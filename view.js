@@ -1,13 +1,14 @@
 // Implémenter ici les fonctions paint à ajouter dans chacune des classes du modèle.
+
 Form.prototype.paint=function (ctx){
     ctx.beginPath();
-    ctx.lineWidth = this.getThickness;
-    ctx.strokeStyle=this.getColor;
+    ctx.lineWidth = this.getThickness();
+    ctx.strokeStyle=this.getColor();
 };
 
 Rectangle.prototype.paint = function(ctx) {
     Form.prototype.paint.call(this,ctx);
-    ctx.rect(this.getX, this.getY, this.getWidth, this.getHeight);
+    ctx.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
     ctx.stroke();
 };
 
@@ -15,15 +16,15 @@ Line.prototype.paint = function(ctx) {
     Form.prototype.paint.call(this,ctx);
 
     ctx.beginPath();
-    ctx.moveTo(this.getX1, this.getY1);
-    ctx.lineTo(this.getX2, this.getY2);
+    ctx.moveTo(this.getX1(), this.getY1());
+    ctx.lineTo(this.getX2(), this.getY2());
     ctx.stroke();
 
 };
 Circle.prototype.paint = function (ctx){
     Form.prototype.paint.call(this,ctx);
     ctx.beginPath();
-    ctx.arc(this.getX,this.getY,this.getRadius,0,2*Math.PI,false);
+    ctx.arc(this.getX(),this.getY(),this.getRadius(),0,2*Math.PI,false);
     ctx.stroke();
 };
 
@@ -62,7 +63,7 @@ Drawing.prototype.updateShapeList = function(){
     var newForm = this.forms[(this.forms.length-1)];
 
     if(newForm instanceof Rectangle){
-        li.appendChild(document.createTextNode("Rectangle(" + newForm.getY + ","
+        li.appendChild(document.createTextNode("Rectangle(" + newForm.getY() + ","
             + newForm.getY() + "," + newForm.getWidth() + "," + newForm.getHeight() + ")"));
     }
     if(newForm instanceof Line){

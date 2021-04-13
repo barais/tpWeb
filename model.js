@@ -22,7 +22,26 @@ function Drawing() {
     this.getForms = function(){
         return this.forms;
     }.bind(this);
-}
+};
+//Classe Form
+function Form( color,thickness) {
+
+    //Initialisation des propriétées
+    this.thickness=thickness;
+    this.color=color;
+
+    //Fonction qui retourne l'epaisseur de la forme
+    this.getThickness=function (){
+        return this.thickness;
+    }.bind(this);
+
+
+    // Fonction qui retourne la couleur de la forme
+    this.getColor =function (){
+        return this.color;
+    }.bind(this);
+
+};
 
 //Classe Rectangle
 
@@ -36,8 +55,9 @@ function Rectangle(x, y, width, height, thickness, color) {
     this.y=y; // Coordonnée y du point haut-gauche
     this.width = width; // Largeur du rectangle
     this.height = height; // Hauteur du rectangle
-   /* this.thickness = thickness; // épaisseur
-    this.color = color; // couleur de la forme*/
+
+    this.thickness = thickness; // épaisseur
+    this.color = color; // couleur de la forme
 
     //Fonction qui retourne la coordonnée de x
     this.getX = function (){
@@ -58,7 +78,7 @@ function Rectangle(x, y, width, height, thickness, color) {
     this.getHeight = function (){
         return this.height;
     }.bind(this);
-}
+};
 
 
 //Classe Line
@@ -71,8 +91,8 @@ function Line(x1, y1, x2, y2, thickness, color) {
     this.y1=y1; // Coordonnée y du premier point
     this.x2=x2; // Coordonnée x du deuxième point
     this.y2=y2; // Coordonnée y du deuxième point
-   /* this.thickness = thickness;
-    this.color = color;*/
+   this.thickness = thickness;
+    this.color = color;
 
     //Fonction qui retourne la coordonnée de x
     this.getX1 = function (){
@@ -93,28 +113,10 @@ function Line(x1, y1, x2, y2, thickness, color) {
     this.getY2 = function (){
         return this.y2;
     }.bind(this);
-}
+};
 
 
-//Classe Form
-function Form(thickness, color) {
 
-    //Initialisation des propriétées
-    this.thickness=thickness;
-    this.color=color;
-
-    //Fonction qui retourne l'epaisseur de la forme
-    this.getThickness=function (){
-        return this.thickness;
-    }.bind(this);
-
-
-    // Fonction qui retourne la couleur de la forme
-    this.getColor =function (){
-        return this.color;
-    }.bind(this);
-
-}
 
 // Classe Circle extends Form
 
@@ -126,8 +128,8 @@ function Circle (x,y,radius,thickness,color){
     this.y=y; // Coordonnée y du point central
     this.radius=radius; // rayon du cercle
 
-   /* this.thickness =thickness;
-    this.color =color;*/
+   this.thickness =thickness;
+    this.color =color;
 
     //Fonction qui retourne la coordonnée de X
     this.getX=function (){
@@ -144,6 +146,6 @@ function Circle (x,y,radius,thickness,color){
     this.getRadius = function (){
         return this.radius;
     }.bind(this);
-}
+};
 
 

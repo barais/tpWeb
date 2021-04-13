@@ -19,7 +19,7 @@ function DnD(canvas, interactor) {
      // Q3
      this.initialX = getMousePosition(canvas,evt).x;
      this.initialY = getMousePosition(canvas,evt).y;
-     this.endX = getMousePosition(canvas,evt).X;
+     this.endX = getMousePosition(canvas,evt).x;
      this.endY = getMousePosition(canvas,evt).y;
      this.pressed = true;
 
