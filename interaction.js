@@ -13,29 +13,32 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
   this.presser=function(evt){
-    this.press=true;
-    x_init=this.getMousePosition(this.canvas,evt).x;
-    y_init=this.getMousePosition(this.canvas,evt).y;
+    this.press=true
+    this.x_init=getMousePosition(this.canvas,evt).x;
+    this.y_init=getMousePosition(this.canvas,evt).y;
+    console.log("Toucher l'écran ("+this.x_init+","+this.y_init+")");
   }.bind(this)
   
   this.relacher=function(evt){
     this.press=false;
-    x_fin=this.getMousePosition(this.canvas,evt).x;
-    y_fin=this.getMousePosition(this.canvas,evt).y;
+    this.x_fin=getMousePosition(this.canvas,evt).x;
+    this.y_fin=getMousePosition(this.canvas,evt).y;
+    console.log("Relâcher la souris ("+this.x_fin+","+this.y_fin+")");    
   }.bind(this)
 
   this.deplacer=function(evt){
     if(this.press){
-      x_fin=this.getMousePosition(this.canvas,evt).x;
-      y_fin=this.getMousePosition(this.canvas,evt).y;
+      this.x_fin=getMousePosition(this.canvas,evt).x;
+      this.y_fin=getMousePosition(this.canvas,evt).y;
+      console.log("Déplacer la souris ("+this.x_fin+","+this.y_fin+")");
     }
    
   }.bind(this)
 
 	// Associer les fonctions précédentes aux évènements du canvas.
-  canvas.addEventListener('mousedown', this.presser, false);
-  canvas.addEventListener('mouseup', this.relacher, false);
-  canvas.addEventListener('mousemove', this.presser, false);
+  canvas.addEventListener('mousedown', this.presser, this.press);
+  canvas.addEventListener('mouseup', this.relacher, this.press);
+  canvas.addEventListener('mousemove', this.deplacer, this.press);
 };
 
 
