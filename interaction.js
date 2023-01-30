@@ -17,13 +17,15 @@ function DnD(canvas, interactor) {
     this.x_init=getMousePosition(this.canvas,evt).x;
     this.y_init=getMousePosition(this.canvas,evt).y;
     console.log("Toucher l'écran ("+this.x_init+","+this.y_init+")");
+    this.interactor.onInteractionStart(this);
   }.bind(this)
   
   this.relacher=function(evt){
     this.press=false;
     this.x_fin=getMousePosition(this.canvas,evt).x;
     this.y_fin=getMousePosition(this.canvas,evt).y;
-    console.log("Relâcher la souris ("+this.x_fin+","+this.y_fin+")");    
+    console.log("Relâcher la souris ("+this.x_fin+","+this.y_fin+")");
+    this.interactor.onInteractionEnd(this); 
   }.bind(this)
 
   this.deplacer=function(evt){
@@ -31,6 +33,7 @@ function DnD(canvas, interactor) {
       this.x_fin=getMousePosition(this.canvas,evt).x;
       this.y_fin=getMousePosition(this.canvas,evt).y;
       console.log("Déplacer la souris ("+this.x_fin+","+this.y_fin+")");
+      this.interactor.onInteractionUpdate(this);
     }
    
   }.bind(this)
